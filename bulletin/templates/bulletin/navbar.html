@@ -1,0 +1,32 @@
+ {% load static %}
+<nav class="navbar navbar-expand-lg navbar-dark bgg-primary">
+ 
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+
+    {% comment %} {% if request.user.is_staff %} {% endcomment %}
+      <li class="nav-item active">
+        <a class="nav-link" href="{% url 'home' %}">Notes <span class="sr-only">(current)</span></a>
+      </li>
+{% comment %} <li class="nav-item">
+        <a class="nav-link" href="{% url 'eleves' eleves.id %}">Elèves</a>
+      </li> 
+     {% endcomment %}
+     
+   <li class="nav-item">
+        <a class="nav-link" href="{% url 'createClasse' %}">Classes</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'createMatiere' %}">Matieres</a>
+      </li>
+    
+  <li class="nav-item">
+        <a class="nav-link" href="{% url 'print' %}">Impression</a>
+      </li>
+      
+    </ul>
+    
+
+    
+  </div>
+</nav>

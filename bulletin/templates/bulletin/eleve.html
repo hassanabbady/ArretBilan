@@ -1,0 +1,73 @@
+{% extends 'bulletin/main.html' %}
+
+{% block content %}
+
+
+
+
+
+<h1 class="pt-5 pl-5">Eleves</h1>
+
+<div class="container">  
+ <CENTER>
+
+  <form  method="GET">
+    {{searchFilter.form}}
+    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Chercher</button>
+  </form> 
+  </center>
+  <br>
+  
+<div class="modal fade" tabindex="-1" role="dialog" id="modal">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content"></div>
+  </div>
+</div>
+
+<!-- Create book button -->
+<button id="createEleve" class="btn btn-primary" type="button" name="button">Creer Eleve</button>
+<a href="{% url 'Import_csv' %}"><button  class="btn btn-primary" type="button" name="button">Importer  <i class="fas fa-file-import"></i></button> </a>
+
+
+<br>
+<table class="table table-dark">
+  <thead>
+    <tr>
+      
+      <th scope="col">Nom & Prénom</th>
+      <th scope="col">Classe</th>
+      
+    </tr>
+  </thead>
+  <tbody>
+  {% for item in eleves %}
+ 
+        {% csrf_token %}
+       <tr>
+      <td> {{item.name }}</td>
+      <td>{{item.classe }}</td>
+        <td>
+        <a href="{% url 'updateEleve' item.id %}"><i class="fas fa-edit"></i> </a>
+
+        <a href="{% url 'deleteEleve' item.id %}" class="text-danger"><i class="fas fa-trash-alt"></i></a></td>
+
+      </tr>
+
+     
+  
+      
+    
+   
+{% endfor %}
+
+  </tbody>
+</table>
+
+</div>
+
+
+
+
+
+{% endblock %}
+

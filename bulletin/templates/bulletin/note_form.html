@@ -1,0 +1,68 @@
+{% extends 'bulletin/main.html' %}
+ {% load static %}
+ {% block content %}
+
+
+
+<form action="" method="POST">
+{% csrf_token %}
+
+ <div class="container">
+
+ <h1 class="pt-5 pl-5">Notes de la classe: {{classes}}</h1><br>
+Les Matieres: 
+<select  name="matiere" class="form-select form-select-lg mb-3" aria-label=".form-select-lg">
+  
+ 
+
+
+{% for item in matieres %}
+
+
+ <option value={{item.id}}>{{ item.name }}</option>
+ 
+
+  {% endfor  %}
+  </select>
+<select  name="sems" class="form-select form-select-lg mb-3" aria-label=".form-select-lg">
+
+  <option value="semestre1">Semestre 1</option>
+  <option value="semestre2">Semestre 2</option>
+
+</select>
+<table class="table table-dark">
+  <thead>
+    <tr>
+      
+      <th scope="col">Nom et Prenom</th>
+      <th scope="col">Action</th>
+      <th scope="col">La note</th>
+    </tr>
+  </thead>
+  <tbody>
+   
+      {% for item in eleves %}
+       <tr>
+     
+      <td>{{ item.name }}</td>
+      <td> <a href="{% url 'deleteEleve' item.id %}" class="text-danger"><i class="fas fa-trash-alt"></i></a>
+      <a href="{% url 'updateEleve' item.id %}"><i class="fas fa-edit"></i></a></td>
+      
+      
+      <td> <input type="number" name="txt{{forloop.counter}}" value="00.00" max=20 min=0 step=0.05 ></td>
+      </tr>
+      {% endfor %}
+    
+    
+  </tbody>
+</table>
+     
+ <center>
+  <button type="submit" class="btn btn-primary">Enregistrer  <i class="fas fa-save"></i>  </button>
+  </center>
+</form>
+
+</div>
+
+
+ {% endblock %}

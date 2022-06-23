@@ -1,0 +1,22 @@
+{% extends 'bulletin/main.html' %}
+{% load static %}
+{% block content %}
+
+<div class="container">  
+
+
+
+
+
+
+
+<h3>Are you sure ? </h3>
+<form Action="{% url 'deleteMatiere' matiere.id %}" method="POST">
+  {% csrf_token %}
+  <a href="{% url 'createMatiere' %}">Annuler</a>
+  <button type="submit" class="btn btn-primary">Yes</button>
+</form>
+
+</div>
+
+ {% endblock %}

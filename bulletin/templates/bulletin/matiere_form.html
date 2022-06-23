@@ -1,0 +1,53 @@
+{% extends 'bulletin/main.html' %}
+ {% load static %}
+ {% block content %}
+
+
+
+
+
+
+
+<h1 class="pt-5 pl-5">Matiere</h1>
+
+<div class="container">  
+
+
+<form method="POST" action="">
+{% csrf_token %}
+
+
+    Ajouter une Matiere: 
+    {{form.name}}
+  
+
+  <button type="submit" class="btn btn-primary">Ajouter</button>
+
+</form><br>
+
+<table class="table table-dark">
+  <thead>
+    <tr>
+      
+      <th scope="col">La matieres</th>
+      
+    </tr>
+  </thead>
+  <tbody>
+   
+      {% for item in matieres %}
+       <tr>
+     
+      <td>{{ item.name }}</td>
+     
+ <td><a href="{% url 'updateMatiere' item.id %}"><i class="fas fa-edit"></i></a>
+        <a href="{% url 'deleteMatiere' item.id %}" class="text-danger"><i class="fas fa-trash-alt"></i></a></td>
+      </tr>
+      {% endfor %}
+    
+    
+  </tbody>
+</table>
+  
+</div>
+ {% endblock %}

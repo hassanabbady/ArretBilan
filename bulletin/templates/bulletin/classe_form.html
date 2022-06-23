@@ -1,0 +1,54 @@
+{% extends 'bulletin/main.html' %}
+ {% load static %}
+ {% block content %}
+{% load crispy_forms_tags %}
+
+
+
+
+<h1 class="pt-5 pl-5">Classe</h1>
+
+<div class="container">  
+  {% comment %} <h6 class="card-subtitle mb-2 text-muted"><a href="{% url 'createClasse' %}"  class="btn btn-primary"> Ajouter une Classe </a></h6> {% endcomment %}
+
+<form Action="" method="POST">
+  {% csrf_token %}
+  {{form|crispy}}<br>
+  <button type="submit" class="btn btn-primary">Ajouter une Classe</button>
+</form>
+<br>
+<table class="table table-dark">
+  <thead>
+    <tr>
+      
+      <th scope="col">La Classe</th>
+      
+    </tr>
+  </thead>
+  <tbody>
+    
+      {% for item in classes %}
+      
+       <tr>
+       <td>{{item.nomClasse }}</td>
+      <td><a href="{% url 'updateClasse' item.id %}"><i class="fas fa-edit"></i></a>
+       <a href="{% url 'deleteClasse' item.id %}" class="text-danger" ><i class="fas fa-trash-alt"></i></a>
+
+
+
+      <a href="{% url 'eleves' item.id %}"><i class="fas fa-eye"></i></a></td>
+      <td><a href="{% url 'notes' item.id %}"><i class="fas fa-chalkboard-teacher"></i></a> <a href="{% url 'AllNotes' %}"><i class="fas fa-eye"></i></a></td>
+      </tr>
+      
+      {% endfor %}
+    
+    
+  </tbody>
+</table>
+
+
+
+  
+
+ {% endblock %}
+ 

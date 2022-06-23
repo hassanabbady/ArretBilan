@@ -1,0 +1,46 @@
+ {% load static %}
+ <!DOCTYPE html>
+<html>
+<head>
+
+<title>Arret Bilan</title>
+ <link rel="stylesheet" href="{% static 'assets/css/bootstrap.css' %}">
+<link rel='stylesheet' type="text/css" href="{% static '/css/style.css' %}">
+<link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+</head>
+<body>
+
+{% include 'bulletin/navbar.html' %}
+
+
+{% block content %}
+
+
+{% endblock %}
+
+
+
+
+   <script src="{% static 'assets/js/bootstrap.js' %}"></script>
+    <script src="{% static 'assets/js/jquery-3.2.1.min.js' %}"></script>
+    <script src="{% static 'js/jquery.bootstrap.modal.forms.js' %}"></script>
+    <!-- You can alternatively load the minified version -->
+    <script src="{% static 'js/jquery.bootstrap.modal.forms.min.js' %}"></script>
+
+<script type="text/javascript">
+$(document).ready(function() {
+
+    $("#createEleve").modalForm({
+        formURL: "{% url 'createEleve' %}"
+    });
+
+});
+
+
+
+</script>
+
+
+
+</body>
+</html> 

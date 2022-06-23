@@ -1,0 +1,35 @@
+{% extends 'bulletin/main.html' %}
+ {% load static %}
+ {% block content %}
+
+
+<form action="" method="POST">
+{% csrf_token %}
+<div class="container">
+
+
+<br>
+La Classe: 
+<select  name="classe" class="form-select form-select-lg mb-3" aria-label=".form-select-lg">
+  {% for item in classes %}
+      
+      <option value="{{item.nomClasse}}">{{item.nomClasse}}</option>
+      
+      
+  {% endfor %}
+</select>
+
+<br>
+<select  name="sems" class="form-select form-select-lg mb-3" aria-label=".form-select-lg">
+
+  <option value="semestre1">Semestre 1</option>
+  <option value="semestre2">Semestre 2</option>
+
+</select>
+
+<button type="submit" class="btn btn-primary">Imprimer</button>
+
+
+</div>
+</form>
+ {% endblock %}

@@ -1,0 +1,69 @@
+{% extends 'bulletin/main.html' %}
+
+{% block content %}
+
+
+
+
+
+<h1 class="pt-5 pl-5">Notes</h1>
+
+<div class="container">  
+ 
+ <CENTER>
+
+  <form  method="GET">
+    {{searchFilter.form}}
+    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Chercher</button>
+  </form> 
+  </center>
+  <br>
+  
+
+<table class="table table-dark">
+  <thead>
+    <tr>
+      
+      <th scope="col">Nom & Prénom</th>
+      <th scope="col">Classe</th>
+      <th scope="col">Semestre</th>
+      <th scope="col">Matiere</th>
+      <th scope="col">Note</th>
+      
+    </tr>
+  </thead>
+  <tbody>
+  {% for item in notes %}
+ 
+        {% csrf_token %}
+       <tr>
+      <td> {{item.eleves }}</td>
+      <td>{{item.classes }}</td>
+      <td>{{item.semestre }}</td>
+      <td>{{item.matieres }}</td>
+      <td>{{item.lanote }}</td>
+        <td>
+        <a href="{% url 'deleteNote' item.id %}"  class="text-danger"><i class="fas fa-trash-alt"></i> </a>
+        <a href="{% url 'updateNote' item.id %}"><i class="fas fa-edit"></i> </a>
+       </td>
+
+      </tr>
+
+     
+  
+      
+    
+   
+{% endfor %}
+
+  </tbody>
+</table>
+
+</div>
+
+
+
+
+
+{% endblock %}
+
